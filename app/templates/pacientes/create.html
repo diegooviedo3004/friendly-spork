@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {{form}}
+    {% csrf_token %}
+    <input type="submit" value="Guardar">
+</form>
+
+{% if form.errors %}
+<script>
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    html: `
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              {{ field }}: {{ error }} <br>
+            {% endfor %}
+          {% endfor %}
+          `,
+  })
+</script>
+{% endif %}
+
+{% endblock %}

@@ -8,6 +8,23 @@
 
 </head>
 <body>
-    {% block content %}{% endblock %}
+    
+    <div class="container">
+        <nav>
+            <ul>
+              <li><strong><a href="{% url 'app' %}">SGM</a></strong></li>
+            </ul>
+            <ul>
+              <li>
+                <a href="{% url 'pacientes'  %}">Pacientes</a>
+            </li>
+              <!-- <li><a href="#">Link</a></li>
+              <li><a href="#" role="button">Button</a></li> -->
+            </ul>
+          </nav>
+
+        {% block content %}{% endblock %}
+
+    </div>
 </body>
 </html>

@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+
+    'cloudinary_storage',
+    'cloudinary',
+
     'app',
 ]
 
@@ -125,3 +129,20 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CSRF_TRUSTED_ORIGINS = ["https://verbose-tribble-597x4qgq47jh7g4j-8000.app.github.dev", "https://localhost:8000"]
+
+
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dolbvx3l6',
+    'API_KEY': '546194191714711',
+    'API_SECRET': '-gBY-QkYTjHPHO17kz11cD-b7Uw'
+}
+
+import os
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")

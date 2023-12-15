@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SGM - Software de Gestión Médica</title>
+    <meta name="description" content="Software de Gestión Médica con Pico CSS." />
+    <link rel="shortcut icon" href="tu-icono.ico" />
+    <link rel="canonical" href="tu-url-canonica" />
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="custom.css" />
+</head>
+
+<body>
+    <style>
+        /* Global CSS variables */
+        :root {
+            --spacing-company: 3rem;
+            --font-weight: 400;
+            --border-radius: 0;
+        }
+
+        /* Typography */
+        h2,
+        h3,
+        hgroup> :last-child {
+            font-weight: 200;
+        }
+
+        small {
+            color: var(--muted-color);
+        }
+
+        /* Header */
+        .hero {
+            background-color: #394046;
+            background-image: url("tu-imagen-de-cabecera.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+
+        header {
+            padding: var(--spacing-company) 0;
+        }
+
+        header hgroup> :last-child {
+            color: var(--h3-color);
+        }
+
+        header hgroup {
+            margin-bottom: var(--spacing-company);
+        }
+
+        /* Main */
+        @media (min-width: 992px) {
+            main .grid {
+                grid-column-gap: var(--spacing-company);
+                grid-template-columns: auto 25%;
+            }
+        }
+
+        form.grid {
+            grid-row-gap: 0;
+        }
+
+        /* Aside nav */
+        aside img {
+            margin-bottom: 0.25rem;
+        }
+
+        aside p {
+            margin-bottom: var(--spacing-company);
+            line-height: 1.25;
+        }
+    </style>
+    <!-- Hero -->
+    <div class="hero" data-theme="dark">
+        <nav class="container-fluid">
+            <ul>
+                <li>
+                    <a href="./" class="contrast" onclick="event.preventDefault()"><strong>SGM</strong></a>
+                </li>
+            </ul>
+        </nav>
+        <header class="container">
+            <hgroup>
+                <h1>SGM</h1>
+                <h2>Software de Gestión Médica</h2>
+            </hgroup>
+            <p><a href="{% url 'app' %}" role="button" >Ir a la app</a></p>
+        </header>
+    </div>
+    <!-- ./ Hero -->
+
+    <!-- Main -->
+    <main class="container">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Bienvenido a SGM</h2>
+                    <h3>Transformando la gestión médica</h3>
+                </hgroup>
+                <p>
+                    Tu mensaje de bienvenida y descripción del software de gestión médica.
+                </p>
+                <!-- Puedes agregar más secciones según sea necesario -->
+
+            </section>
+
+            <aside>
+                <a href="#" aria-label="Ejemplo" onclick="event.preventDefault()"><img
+                        src="https://cataas.com/cat" alt="Imagen de Ejemplo" /></a>
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Información adicional</a><br />
+                    <small>Descripción corta o enlace relevante</small>
+                </p>
+                <!-- Puedes agregar más secciones de información adicional según sea necesario -->
+
+            </aside>
+        </div>
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Footer -->
+    <footer class="container">
+        <small>Desarrollado con <a href="https://picocss.com">Pico</a> •
+            <a href="tu-enlace-de-codigo">Código fuente</a></small>
+    </footer>
+    <!-- ./ Footer -->
+
+    <!-- Cambiador de tema minimalista -->
+    <script src="js/minimal-theme-switcher.js"></script>
+</body>
+
+</html>

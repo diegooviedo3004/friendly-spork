@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="{% url 'paciente_create' %}" role="button">Crear paciente</a>
+
+<table role="grid responsive">
+  <thead>
+    <tr>
+      <th scope="col">Foto</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Numero de expediente</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in q %}
+    <tr>
+      <th scope="row">
+        <img src="{{obj.img.url}}" alt="" width="200px">
+      </th>
+      <td>
+        {{obj.nombres}} <br>
+        {{obj.telefono}} <br>
+      </td>
+      <td>
+        {{obj.get_expediente}}
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+
+{% endblock %}

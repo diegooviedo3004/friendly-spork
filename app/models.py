@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+
+TAMANO_EXPEDIENTE = 10
 # Create your models here.
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -36,7 +39,10 @@ class Clinica(BaseModel):
     nombre = models.CharField(max_length=50)
     img = models.ImageField(upload_to='clinicas/', null=True, blank=True)
     creada_por = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='created_clinics', null=True)
-
+    
+    def obtener_pacientes(self):
+        return self.paciente_set.all()
+    
 class ClinicaMiembro(models.Model):
     ROLES = [
         ('Administrador', 'Administrator'),
@@ -65,4 +71,7 @@ class Paciente(BaseModel):
     notas = models.TextField(null=True, blank=True)
 
     telefono = models.CharField(max_length=50, null=True, blank=True)
+
+    def get_expediente(self):
+        return f"# {self.id:0{TAMANO_EXPEDIENTE}d}"
 
