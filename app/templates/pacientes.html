@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<a href="{% url 'paciente_create' %}" role="button">Crear paciente</a>
+<a href="{% url 'paciente_create' id_clinica %}" role="button">Crear paciente</a>
 
 <table role="grid responsive">
   <thead>
@@ -9,6 +9,7 @@
       <th scope="col">Foto</th>
       <th scope="col">Nombre</th>
       <th scope="col">Numero de expediente</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,9 @@
       </td>
       <td>
         {{obj.get_expediente}}
+      </td>
+      <td>
+        <a href="{% url 'paciente_edit' obj.id id_clinica %}">Edit</a>
       </td>
     </tr>
     {% endfor %}
