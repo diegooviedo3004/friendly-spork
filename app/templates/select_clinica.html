@@ -18,7 +18,7 @@
             <a href="{% url 'app' obj.id %}">{{obj.clinica.nombre}}</a>
         </li>
         {% endfor %}
-        <a href="">Crea una clínica</a>
+        <a href="{% url 'clinica_create' %}">Crea una clínica</a>
         <a href="{% url 'account_logout' %}">Logout</a>
     </ul>
 

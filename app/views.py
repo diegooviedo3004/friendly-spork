@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import (
-    PacienteForm
+    PacienteForm, ClinicaForm
 )
 from .models import (
     Paciente, Clinica
@@ -81,3 +81,22 @@ def paciente_edit(request, paciente_id, id_clinica):
     }
 
     return render(request, 'pacientes/create.html', context)
+
+@login_required
+def clinica_create(request):
+    
+    form = ClinicaForm(request.POST or None, request.FILES or None)
+
+    if request.method == "POST":
+
+        if form.is_valid():
+            form.instance.creada_por = request.user
+            clinica = form.save()
+            return redirect("app", id_clinica=clinica.id)
+
+    context = {
+        "form": form
+    }
+
+
+    return render(request, 'clinicas/create.html', context)

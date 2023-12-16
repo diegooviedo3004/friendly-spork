@@ -75,3 +75,11 @@ class Paciente(BaseModel):
     def get_expediente(self):
         return f"# {self.id:0{TAMANO_EXPEDIENTE}d}"
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+@receiver(post_save, sender=Clinica)
+def create_clinica_miembro(sender, instance, created, **kwargs):
+    if created:
+        # Cuando se crea una instancia de Clinica, crea automáticamente una instancia de ClinicaMiembro
+        ClinicaMiembro.objects.create(user=instance.creada_por, clinica=instance, rol='Administrador')
