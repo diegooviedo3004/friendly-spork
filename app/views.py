@@ -49,8 +49,8 @@ def paciente_create(request, id_clinica):
 
         if form.is_valid():
             form.instance.clinica = get_object_or_404(Clinica, id=id_clinica)
-            form.save()
-            return redirect("pacientes")
+            producto = form.save()
+            return redirect("pacientes", id_clinica=id_clinica)
         
     context = {
         "form": form,
@@ -100,3 +100,28 @@ def clinica_create(request):
 
 
     return render(request, 'clinicas/create.html', context)
+    
+
+@login_required
+def paciente_view(request, paciente_id, id_clinica):
+    
+    clinica = get_object_or_404(Clinica, id=id_clinica)
+
+    paciente = get_object_or_404(Paciente, id=paciente_id, clinica=clinica)
+
+    #form = PacienteForm(request.POST or None, request.FILES or None, instance=paciente)
+
+    if request.method == "POST":
+        pass
+        # if form.is_valid():
+        #     form.instance.clinica = clinica
+        #     form.save()
+        #     return redirect("pacientes", id_clinica=id_clinica)
+        
+    context = {
+      #  "form": form,
+        "id_clinica": id_clinica,
+        "obj": paciente
+    }
+
+    return render(request, 'pacientes/view.html', context)

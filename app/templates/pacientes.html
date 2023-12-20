@@ -14,10 +14,14 @@
   </thead>
   <tbody>
     {% for obj in q %}
+
     <tr>
+
       <th scope="row">
-        <img src="{{obj.img.url}}" alt="" width="200px">
+          <img src="{{obj.img.url}}" alt="" width="200px">
+
       </th>
+
       <td>
         {{obj.nombres}} <br>
         {{obj.telefono}} <br>
@@ -26,11 +30,15 @@
         {{obj.get_expediente}}
       </td>
       <td>
-        <a href="{% url 'paciente_edit' obj.id id_clinica %}">Edit</a>
+        <a role="button" href="{% url 'paciente_view' obj.id id_clinica %}">
+          View
+        </a>
+
+        <a role="button" href="{% url 'paciente_edit' obj.id id_clinica %}">Edit</a>
       </td>
     </tr>
-    {% endfor %}
 
+    {% endfor %}
   </tbody>
 </table>
 
