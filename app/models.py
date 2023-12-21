@@ -75,6 +75,28 @@ class Paciente(BaseModel):
     def get_expediente(self):
         return f"# {self.id:0{TAMANO_EXPEDIENTE}d}"
 
+
+class CategoriaDiagnostico(BaseModel):
+    nombre = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nombre
+
+class Diagnostico(BaseModel):
+    nombre = models.CharField(max_length=50)
+    codigo = models.CharField(max_length=50)
+    categoria = models.ForeignKey(CategoriaDiagnostico, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f"{self.codigo} - {self.nombre}"
+
+
+class DiagnosticoPaciente(BaseModel):
+    diagnostico = models.ForeignKey(Diagnostico, on_delete=models.SET_NULL, null=True)
+    paciente = models.ForeignKey(Paciente, on_delete=models.SET_NULL, null=True)
+    comentario = models.TextField(null=True, blank=True)
+
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -83,3 +105,5 @@ def create_clinica_miembro(sender, instance, created, **kwargs):
     if created:
         # Cuando se crea una instancia de Clinica, crea automáticamente una instancia de ClinicaMiembro
         ClinicaMiembro.objects.create(user=instance.creada_por, clinica=instance, rol='Administrador')
+
+

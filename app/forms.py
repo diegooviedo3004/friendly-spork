@@ -1,7 +1,7 @@
 from django import forms
 
 from .models import (
-    Paciente, Clinica
+    Paciente, Clinica, DiagnosticoPaciente
 )
 
 class PacienteForm(forms.ModelForm):
@@ -20,3 +20,9 @@ class ClinicaForm(forms.ModelForm):
     class Meta:
         model = Clinica
         exclude = ("creada_por", )
+
+class DiagnosticoPacienteForm(forms.ModelForm):
+
+    class Meta:
+        model = DiagnosticoPaciente
+        exclude = ("paciente",)

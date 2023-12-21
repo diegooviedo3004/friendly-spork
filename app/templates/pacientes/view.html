@@ -15,12 +15,13 @@
         Expediente: {{obj.get_expediente}} <br>
       </article>
       <article>
-        <header>Header</header>
-        Body
-        <footer>Footer</footer>
+        <header>Historias clínicas <a href="{% url 'diagnostico_create' obj.id  id_clinica %}">➕</a></header>
+        <article>
+          wdw
+        </article>
       </article>
       <article>
-        <header>Header</header>
+        <header>Diagnóstico <a href="{% url 'diagnostico_create' obj.id  id_clinica %}">➕</a></header>
         Body
         <footer>Footer</footer>
       </article>
